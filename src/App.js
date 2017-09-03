@@ -8,14 +8,20 @@ class App extends Component {
   render(){
     return (
       <div className="app">
-        <div className="app-header">
+        <div className="app-head">
+          <div className="container">
 
+          </div>
         </div>
         <div className="app-body">
-        <Crypto />
+          <div className="container">
+            <Crypto />
+          </div>
         </div>
         <div className="app-foot">
+          <div className="container">
 
+          </div>
         </div>
       </div>
     );

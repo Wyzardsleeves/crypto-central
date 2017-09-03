@@ -6,3 +6,5 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ## Crypto Central
 
 # A mockup crypto currency chart and maybe more!
+
+This is an ongoing project that I'm going to be attacking from time to time.
