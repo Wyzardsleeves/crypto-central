@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //Build crypto list
 class Crypto extends Component {
-  render function(){
+  render(){
     return (
       <div className="crypto">
         <h5>This is a test for crypto </h5>
@@ -10,3 +10,5 @@ class Crypto extends Component {
     );
   }
 }
+
+export default Crypto;
