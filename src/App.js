@@ -1,10 +1,34 @@
 import React, { Component } from 'react';
-import Crypto from './Components/Crypto';
+import axios from 'axios'
 import './App.css';
-
 
 //Main app
 class App extends Component {
+  ///user?ID=12345
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      all: this.getCryptoData
+    }
+  }
+
+  componentWillMount(){
+    this.getCryptoData();
+  }
+
+  getCryptoData(){
+    axios.get('https://coinmarketcap-nexuist.rhcloud.com/api/all')
+      .then((response) => {
+        this.setState({all: response.data}, function(){
+          console.log(this.state.all);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   render(){
     return (
       <div className="app">
@@ -15,7 +39,7 @@ class App extends Component {
         </div>
         <div className="app-body">
           <div className="container">
-            <Crypto />
+            {this.state.all}
           </div>
         </div>
         <div className="app-foot">
@@ -29,13 +53,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-<div className="App-header">
-  <img src={logo} className="App-logo" alt="logo" />
-  <h2>Welcome to React</h2>
-</div>
-<p className="App-intro">
-  To get started, edit <code>src/App.js</code> and save to reload.
-</p>
-*/
