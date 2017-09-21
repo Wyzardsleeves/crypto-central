@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 
-//Main app
 class App extends Component {
-  ///user?ID=12345
 
   constructor(props) {
     super(props);
     this.state = {
-      all: this.getCryptoData
+      list: [],
+      test: "dog"
     }
   }
 
@@ -17,6 +16,17 @@ class App extends Component {
     this.getCryptoData();
   }
 
+  getCryptoData(){
+    axios.get('https://coinmarketcap-nexuist.rhcloud.com/api/all')
+      .then((response) => {
+        this.setState({list: response.data});
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  /*
   getCryptoData(){
     axios.get('https://coinmarketcap-nexuist.rhcloud.com/api/all')
       .then((response) => {
@@ -28,7 +38,11 @@ class App extends Component {
         console.log(err);
       })
   }
+  */
 
+/*
+
+*/
   render(){
     return (
       <div className="app">
@@ -39,7 +53,11 @@ class App extends Component {
         </div>
         <div className="app-body">
           <div className="container">
-            {this.state.all}
+            <ul>
+              {Object.keys(this.state.list).map((x, index) =>
+                <li>{x}</li>
+              )}
+            </ul>
           </div>
         </div>
         <div className="app-foot">
