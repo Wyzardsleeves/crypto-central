@@ -3,11 +3,29 @@
 }
 
 .app-head{
-  
+
 }
 
 .app-body{
 
+}
+
+.container{
+  width: 65%;
+}
+.crypto-list{
+  list-style: none;
+}
+
+.crypto-currencies{
+  display: table;
+}
+
+.crypto-currencies h5{
+  display: table-row;
+  width: 100px;
+  margin: 0 30px 0 0;
+  display: inline;
 }
 
 .app-foot{

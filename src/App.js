@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [],
+      all: [],
       test: "dog"
     }
   }
@@ -17,32 +17,17 @@ class App extends Component {
   }
 
   getCryptoData(){
-    axios.get('https://coinmarketcap-nexuist.rhcloud.com/api/all')
-      .then((response) => {
-        this.setState({list: response.data});
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
-
-  /*
-  getCryptoData(){
-    axios.get('https://coinmarketcap-nexuist.rhcloud.com/api/all')
-      .then((response) => {
+    axios.get('https://api.coinmarketcap.com/v1/ticker/')
+      .then(response => {
         this.setState({all: response.data}, function(){
           console.log(this.state.all);
         });
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-  */
-
-/*
-
-*/
+  //{Object.keys(this.state.all)
   render(){
     return (
       <div className="app">
@@ -53,9 +38,15 @@ class App extends Component {
         </div>
         <div className="app-body">
           <div className="container">
-            <ul>
-              {Object.keys(this.state.list).map((x, index) =>
-                <li>{x}</li>
+            <ul className="crypto-list">
+              {this.state.all.map((coin, index) =>
+                <li key={index}>
+                  <div className="crypto-currencies">
+                    <h5>{coin.symbol}</h5>
+                    <h5>{coin.id}</h5>
+                    <h5>${coin.price_usd}</h5>
+                  </div>
+                </li>
               )}
             </ul>
           </div>
@@ -70,4 +61,17 @@ class App extends Component {
   }
 }
 
+/* Original
+getCryptoData(){
+  axios.get('https://coinmarketcap-nexuist.rhcloud.com/api/all')
+    .then((response) => {
+      this.setState({all: response.data}, function(){
+        console.log(this.state.all);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+*/
 export default App;
