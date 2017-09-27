@@ -2,32 +2,85 @@
 
 }
 
-.app-head{
-
+.container{
+  margin: 0 auto;
+  min-width: 50%;
+  width: 70%;
 }
+
+/* ----- Head ----- */
+.app-head{
+  height: 65px;
+  background-color: #50e555;
+}
+
+.head-left{
+  display: inline;
+  position: relative;
+  top: 5px;
+}
+.head-left img{
+  display: inline;
+  height: 50px;
+  margin-right: 15px;
+}
+.head-left h4{
+  display: inline;
+  color: white;
+}
+/* ---------------- */
 
 .app-body{
 
 }
 
-.container{
-  width: 65%;
-}
 .crypto-list{
   list-style: none;
+  padding: 0;
 }
 
-.crypto-currencies{
-  display: table;
+.crypto-currencies td{
+  font-size: 14px;
+  padding: 0;
 }
 
-.crypto-currencies h5{
-  display: table-row;
-  width: 100px;
-  margin: 0 30px 0 0;
-  display: inline;
+.crypto-currencies td:last-child{
 }
 
+.crypto-list tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.crypto-list tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* ----- Fooot ----- */
 .app-foot{
-
+  background-color: #50e555;
+  color: white;
 }
+.app-foot h6{
+  font-size: 15px;
+}
+
+.general-info{
+  width: 33%;
+}
+
+.sub-info{
+  width: 33%;
+}
+
+.contact-info{
+  width: 33%;
+}
+.contact-info h6{
+  line-height: 10px;
+}
+.contact-info h5{
+  font-size: 12px;
+  line-height: 10px;
+}
+
+/* ----------------- */
