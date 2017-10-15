@@ -28,6 +28,16 @@ class App extends Component {
         console.log(error);
       });
   }
+
+  valueColor(x){
+    if(x > 0){
+      x.style.color = "green";
+    }
+    else if(x < 0){
+      x.style.color = "red";
+    }
+  }
+
   //{Object.keys(this.state.all)
   render(){
     return (
@@ -46,28 +56,30 @@ class App extends Component {
         <div className="app-body">
           <div className="container">
             <div className="crypto-list">
-            <table>
-              <tr>
-                <th>Index</th>
-                <th>Short</th>
-                <th>Name</th>
-                <th>Price(usd)</th>
-              </tr>
-              {this.state.all.map((coin) =>
-                  <tr className="crypto-currencies">
-                    <td className="col-sm-1">{coin.rank}</td>
-                    <td className="col-sm-2">{coin.symbol}</td>
-                    <td className="col-sm-4">{coin.name}</td>
-                    <td className="col-sm-1">${coin.price_usd}</td>
-                  </tr>
-              )}
+              <table>
+                <tr>
+                  <th>Index</th>
+                  <th>Short</th>
+                  <th>Name</th>
+                  <th>Price(usd)</th>
+                  <th>7d change</th>
+                </tr>
+                {this.state.all.map((coin) =>
+                    <tr className="crypto-currencies">
+                      <td className="col-sm-2">{coin.rank}</td>
+                      <td className="col-sm-2">{coin.symbol}</td>
+                      <td className="col-sm-4">{coin.name}</td>
+                      <td className="col-sm-2">${coin.price_usd}</td>
+                      <td className="col-sm-1">{coin.percent_change_7d}</td>
+                    </tr>
+                )}
               </table>
             </div>
           </div>
         </div>
         <div className="app-foot">
           <div className="container">
-            <div>
+            <div className="top-foot">
               <div className="general-info col-xs-2">
                 <h6 href="#">About</h6>
                 <h6 href="#">Services</h6>
@@ -85,6 +97,11 @@ class App extends Component {
                 <h5>(555) 563-2385</h5>
                 <h5>555 Old Phony Ln</h5>
                 <h5>Fakeville, GA</h5>
+              </div>
+            </div>
+            <div className="bottom-foot">
+              <div className="social-info">
+
               </div>
             </div>
           </div>

@@ -39,6 +39,10 @@
   padding: 0;
 }
 
+.crypto-list table{
+  width: 100%;
+}
+
 .crypto-currencies td{
   font-size: 14px;
   padding: 0;
@@ -55,31 +59,33 @@
     background-color: #fff;
 }
 
-/* ----- Fooot ----- */
+/* ----- Foot ----- */
 .app-foot{
   background-color: #50e555;
   color: white;
+  padding: 40px 0;
 }
 .app-foot h6{
   font-size: 15px;
 }
 
 .general-info{
-  width: 33%;
+  width: 25%;
+  margin-right: 8.3%;
 }
-
 .sub-info{
-  width: 33%;
+  width: 25%;
+  margin-right: 8.3%;
 }
-
 .contact-info{
-  width: 33%;
-}
-.contact-info h6{
-  line-height: 10px;
+  width: 25%;
+  margin-right: 8.3%;
 }
 .contact-info h5{
   font-size: 12px;
+  line-height: 10px;
+}
+.contact-info h6{
   line-height: 10px;
 }
 
