@@ -28,7 +28,25 @@
   display: inline;
   color: white;
 }
-/* ---------------- */
+
+.head-right{
+  display: inline;
+  float: right;
+  width: 150px;
+  height: 25px;
+}
+.head-right h5{
+  float: right;
+  position: relative;
+  top: 50%;
+  display: inline;
+  margin-left: 10px;
+}
+.head-right h5:hover{
+  cursor: pointer;
+}
+
+/* ------Body------ */
 
 .app-body{
 
