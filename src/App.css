@@ -77,6 +77,23 @@
     background-color: #fff;
 }
 
+.down-chev{
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #a3ffa6;
+  color: #0b7f0f;
+  text-align: center;
+  font-size: 30px;
+}
+.down-chev:hover{
+  background-color: #c9ffcb;
+  cursor: pointer;
+}
+.down-chev:active{
+  background-color: #35c63a;
+  color: #a3ffa6;
+}
+
 /* ----- Foot ----- */
 .app-foot{
   background-color: #50e555;
@@ -108,3 +125,8 @@
 }
 
 /* ----------------- */
+
+
+/* ---Main Green -- #50e555 ---- */
+/* ---Dark Green -- #35c63a ---- */
+/* ---Lite Green -- #a3ffa6 ---- */

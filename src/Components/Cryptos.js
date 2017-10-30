@@ -7,12 +7,18 @@ class Cryptos extends Component {
     super(props);
     this.state = {
       all: [],
-      test: "dog"
-    }
+      increment: null
+    };
+    //this.handleClick.bind(this);
   }
 
   componentWillMount(){
     this.getCryptoData();
+    this.handleClick();
+  }
+
+  handleClick(){
+    this.setState({increment: this.state.increment + 100});
   }
 
   getCryptoData(){
@@ -27,36 +33,33 @@ class Cryptos extends Component {
       });
   }
 
-  addToList(){
-    var num = 100;
-    this.state.all.slice(0, num);
-  }
-
   render(){
     return (
       <div className="container">
         <div className="crypto-list">
           <table>
-            <tr>
-              <th>Index</th>
-              <th>Short</th>
-              <th>Name</th>
-              <th>Price(usd)</th>
-              <th>7d change</th>
-            </tr>
-            {this.state.all.map((coin) =>
-              <tr className="crypto-currencies">
-                <td className="col-sm-2">{coin.rank}</td>
-                <td className="col-sm-2">{coin.symbol}</td>
-                <td className="col-sm-4">{coin.name}</td>
-                <td className="col-sm-2">${coin.price_usd}</td>
-                <td className="col-sm-1">{coin.percent_change_7d}</td>
+            <tbody>
+              <tr>
+                <th>Index</th>
+                <th>Short</th>
+                <th>Name</th>
+                <th>Price(usd)</th>
+                <th>7d change</th>
               </tr>
-            )}
+              {this.state.all.slice(0, this.state.increment).map((coin) =>
+                <tr className="crypto-currencies" key={coin.id}>
+                  <td className="col-sm-2">{coin.rank}</td>
+                  <td className="col-sm-2">{coin.symbol}</td>
+                  <td className="col-sm-4">{coin.name}</td>
+                  <td className="col-sm-2">${coin.price_usd}</td>
+                  <td className="col-sm-1">{coin.percent_change_7d}</td>
+                </tr>
+              )}
+            </tbody>
           </table>
         </div>
-        <div className="down">
-          <h3><strong>V</strong></h3>
+        <div className="down-chev" onClick={(event)=>this.handleClick()}>
+          <strong><i className="ion-chevron-down"></i></strong>
         </div>
       </div>
     );
