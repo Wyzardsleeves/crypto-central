@@ -7,20 +7,24 @@ class Cryptos extends Component {
     super(props);
     this.state = {
       all: [],
-      increment: null
+      increment: 75
     };
-    //this.handleClick.bind(this);
   }
 
   componentWillMount(){
     this.getCryptoData();
-    this.handleClick();
   }
 
-  handleClick(){
-    this.setState({increment: this.state.increment + 100});
+  //sort by
+  sortClick(passed){
+    this.setState({all: this.state.all.sort(function(a, b){
+        return b[passed] - a[passed];
+      })
+    });
+    console.log("sort_activate");
   }
 
+  //data fetch from coinmarketcap api
   getCryptoData(){
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
       .then(response => {
@@ -33,6 +37,11 @@ class Cryptos extends Component {
       });
   }
 
+  //button for list expansion
+  addClick(){
+    this.setState({increment: this.state.increment + 75});
+  }
+
   render(){
     return (
       <div className="container">
@@ -40,10 +49,10 @@ class Cryptos extends Component {
           <table>
             <tbody>
               <tr>
-                <th>Index</th>
+                <th onClick={(event) => this.sortClick('id')}>Index</th>
                 <th>Short</th>
-                <th>Name</th>
-                <th>Price(usd)</th>
+                <th onClick={(event) => this.sortClick('name')}>Name</th>
+                <th onClick={(event) => this.sortClick('price_usd')}>Price(usd)</th>
                 <th>7d change</th>
               </tr>
               {this.state.all.slice(0, this.state.increment).map((coin) =>
@@ -58,7 +67,7 @@ class Cryptos extends Component {
             </tbody>
           </table>
         </div>
-        <div className="down-chev" onClick={(event)=>this.handleClick()}>
+        <div className="down-chev" onClick={() => this.addClick()}>
           <strong><i className="ion-chevron-down"></i></strong>
         </div>
       </div>
