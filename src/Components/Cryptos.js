@@ -7,7 +7,8 @@ class Cryptos extends Component {
     super(props);
     this.state = {
       all: [],
-      increment: 75
+      increment: 75,
+      sortArr: []
     };
   }
 
@@ -15,14 +16,25 @@ class Cryptos extends Component {
     this.getCryptoData();
   }
 
-  //sort by
+  //Sorting function
   sortClick(passed){
-    this.setState({all: this.state.all.sort(function(a, b){
-        return b[passed] - a[passed];
+    if(this.state.all[0][passed] < this.state.all[this.state.all.length - 1][passed]){  //ascending
+      console.log("Sort highest first");
+      this.setState({all: this.state.all.sort(function(a, b){
+          return b[passed] - a[passed];
+        })
       })
-    });
+    }
+    else if(this.state.all[0][passed] > this.state.all[this.state.all.length - 1][passed]){ //decending
+      console.log("Sort lowest first");
+      this.setState({all: this.state.all.sort(function(a, b){
+          return a[passed] - b[passed];
+        })
+      })
+    }
+    //this.setState({all: this.state.sortArr});
     console.log("sort_activate");
-  }
+  };
 
   //data fetch from coinmarketcap api
   getCryptoData(){
@@ -49,10 +61,10 @@ class Cryptos extends Component {
           <table>
             <tbody>
               <tr>
-                <th onClick={(event) => this.sortClick('id')}>Index</th>
+                <th onClick={() => this.sortClick('id')}>Index</th>
                 <th>Short</th>
-                <th onClick={(event) => this.sortClick('name')}>Name</th>
-                <th onClick={(event) => this.sortClick('price_usd')}>Price(usd)</th>
+                <th onClick={() => this.sortClick('name')}>Name</th>
+                <th onClick={() => this.sortClick('price_usd')}>Price(usd)</th>
                 <th>7d change</th>
               </tr>
               {this.state.all.slice(0, this.state.increment).map((coin) =>
