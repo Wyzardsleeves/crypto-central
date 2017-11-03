@@ -32,7 +32,6 @@ class Cryptos extends Component {
         })
       })
     }
-    //this.setState({all: this.state.sortArr});
     console.log("sort_activate");
   };
 
@@ -51,7 +50,7 @@ class Cryptos extends Component {
 
   //button for list expansion
   addClick(){
-    this.setState({increment: this.state.increment + 75});
+    this.setState({increment: this.state.increment + 75})
   }
 
   render(){
@@ -61,11 +60,11 @@ class Cryptos extends Component {
           <table>
             <tbody>
               <tr>
-                <th onClick={() => this.sortClick('id')}>Index</th>
+                <th className="sortable" onClick={() => this.sortClick('rank')}>Rank</th>
                 <th>Short</th>
-                <th onClick={() => this.sortClick('name')}>Name</th>
-                <th onClick={() => this.sortClick('price_usd')}>Price(usd)</th>
-                <th>7d change</th>
+                <th>Name</th>
+                <th className="sortable" onClick={() => this.sortClick('price_usd')}>Price(usd)</th>
+                <th className="sortable" onClick={() => this.sortClick('percent_change_7d')}>7d change</th>
               </tr>
               {this.state.all.slice(0, this.state.increment).map((coin) =>
                 <tr className="crypto-currencies" key={coin.id}>
