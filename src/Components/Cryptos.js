@@ -8,7 +8,6 @@ class Cryptos extends Component {
     this.state = {
       all: [],
       increment: 75,
-      sortArr: []
     };
   }
 
@@ -37,7 +36,7 @@ class Cryptos extends Component {
 
   //data fetch from coinmarketcap api
   getCryptoData(){
-    axios.get('https://api.coinmarketcap.com/v1/ticker/')
+    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=0')
       .then(response => {
         this.setState({all: response.data}, function(){
           console.log(this.state.all);
