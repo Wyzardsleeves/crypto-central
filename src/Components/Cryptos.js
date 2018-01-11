@@ -36,7 +36,7 @@ class Cryptos extends Component {
 
   //data fetch from coinmarketcap api
   getCryptoData(){
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=0')
+    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=300')
       .then(response => {
         this.setState({all: response.data}, function(){
           console.log(this.state.all);
