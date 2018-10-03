@@ -56,7 +56,10 @@
 .app-body{
 
 }
-
+.list{
+  width: 75%;
+  display: inline-block;
+}
 .crypto-list{
   list-style: none;
   padding: 0;
@@ -111,6 +114,19 @@
 .down-chev:active{
   background-color: #35c63a;
   color: #a3ffa6;
+}
+
+.chat{
+  height: 70%;
+  position: fixed;
+  vertical-align: top;
+  width: 25%;
+  display: inline-block;
+}
+
+.submit-form{
+  position: relative;
+  bottom: 0;
 }
 
 /* ----- Foot ----- */

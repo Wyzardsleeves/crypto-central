@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './cc-home-logo.png';
 import Cryptos from './Components/Cryptos';
+import Chat from './Components/Chat';
 import Login from './Components/Login';
 import './App.css';
 
@@ -20,7 +21,10 @@ class App extends Component {
         </div>
         <div className="app-body">
           {/* Tabs will go here */}
-          <Cryptos />
+          <div className="container">
+            <Cryptos />
+            <Chat />
+          </div>
         </div>
         <div className="app-foot">
           <div className="container">
