@@ -15,13 +15,26 @@ class Chat extends Component {
   }
 
   componentDidMount(){
-    this.getChatList()
+    this.getChatList();
+    this.authListener();
+  }
+
+  authListener(){
+    firebase.auth().onAuthStateChanged((user) => {
+      //console.log(user);
+      if(user){
+        this.setState({currentUser: user}, console.log(user.email));
+        localStorage.setItem('user', user.uid);
+      }else{
+        this.setState({currentUser: null});
+        localStorage.setItem('user');
+      }
+    });
   }
 
   getChatList(){
     let messagesRef = firebase.database().ref('messages').orderByChild('desc').limitToLast(100);
     messagesRef.on('child_added', snapshot => {
-      /* Update React state when message is added at Firebase Database */
       this.setState({ chatMessages: [snapshot.val()].concat(this.state.chatMessages)});
     })
   }
@@ -52,10 +65,15 @@ class Chat extends Component {
           </ul>
         </div>
         <div className="submit-form">
-          <form>
-            <input ref="chatfield" type="text" />
-            <button onClick={this.sendMessage}>Send</button>
-          </form>
+          {this.state.currentUser &&
+            <form>
+              <input ref="chatfield" type="text" />
+              <button onClick={this.sendMessage}>Send</button>
+            </form>
+          }
+          {!this.state.currentUser &&
+            <h5><i>Please log in to comment!</i></h5>
+          }
         </div>
       </div>
     );
