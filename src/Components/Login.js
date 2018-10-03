@@ -69,13 +69,13 @@ class Login extends Component {
     return (
       <div className="head-right">
         {this.state.currentUser &&
-          <div>
+          <div className="elements">
             <h5>Logged in as {this.state.currentUser.email}</h5>
             <button onClick={this.logout}>Log Out</button>
           </div>
         }
         {!this.state.currentUser &&
-          <div>
+          <div className="elements">
             <input type='email' placeholder='Email Here' ref='email' />
             <input type='password' placeholder='Password Here' ref='password' />
             <button onClick={this.signUp}>Sign Up!</button>

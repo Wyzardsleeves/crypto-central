@@ -44,22 +44,21 @@ class Chat extends Component {
     e.preventDefault();
     let sendToDatabase = firebase.database().ref('messages');
     sendToDatabase.push({
-      user: 'Justin',
+      //user: 'Justin',
+      user: this.state.currentUser.email,
       message: this.refs.chatfield.value
     });
     this.refs.chatfield.value = '';
   }
 
   render(){
-    let refList = firebase.database().ref();
-
     return (
       <div className="chat">
         <div>
           <ul>
             {this.state.chatMessages.map((text) =>
               <li key={text.id}>
-                <p>{text.user}: {text.message}</p>
+                <p><strong>{text.user}</strong>: {text.message}</p>
               </li>).reverse()  //displays last result at bottom
             }
           </ul>
@@ -67,7 +66,7 @@ class Chat extends Component {
         <div className="submit-form">
           {this.state.currentUser &&
             <form>
-              <input ref="chatfield" type="text" />
+              <input placeholder={'Send as ' + this.state.currentUser.email} ref="chatfield" type="text" />
               <button onClick={this.sendMessage}>Send</button>
             </form>
           }

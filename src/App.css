@@ -15,7 +15,8 @@
 }
 
 .head-left{
-  display: inline;
+  width: 50%;
+  display: inline-block;
   position: relative;
   top: 5px;
 }
@@ -30,25 +31,20 @@
 }
 
 .head-right{
-  display: inline;
-  float: right;
-  width: 150px;
+  display: inline-block;
+  width: 50%;
   height: 25px;
 }
-.head-right h5{
-  font-size: 14px;
-  color: white;
+.head-right .elements{
   float: right;
   position: relative;
-  top: 50%;
-  display: inline;
-  margin-left: 10px;
+  top: 10px;
 }
-.head-right h5:hover{
-  cursor: pointer;
-}
-.head-right a{
+.head-right h5{
+  display: inline-block;
+  font-size: 14px;
   color: white;
+  padding: 0 10px 0 0;
 }
 
 /* ------Body------ */
@@ -59,6 +55,7 @@
 .list{
   width: 75%;
   display: inline-block;
+  padding-right: 10px;
 }
 .crypto-list{
   list-style: none;
@@ -118,14 +115,20 @@
 
 .chat{
   height: 70%;
+  padding: 10px;
   position: fixed;
   vertical-align: top;
   width: 25%;
   display: inline-block;
 }
 
+.chat ul{
+  list-style: none;
+  padding: 0;
+}
+
 .submit-form{
-  position: relative;
+  position: absolute;
   bottom: 0;
 }
 
