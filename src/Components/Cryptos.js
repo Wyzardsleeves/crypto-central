@@ -42,24 +42,18 @@ class Cryptos extends Component {
         return 0;
       })
     })
-    /*
-    return a.firstname == b.firstname ? 0 : a.firstname < b.firstname ? -1 : 1;
-
-    or
-
-    this.setState({all: this.state.all.sort(function(a, b){
-      if(a[passed] < b[passed]) return -1;
-      if(a[passed] > b[passed]) return 1;
-      return 0;
-      })
-    })
-    */
     console.log("sort_str_activate");
   };
 
   //data fetch from coinmarketcap api
   getCryptoData(){
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=300')
+    axios({
+      method: 'GET',
+      url: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=5000&convert=USD',
+      headers: {
+        'X-CMC_PRO_API_KEY': '9d2e3a87-15ed-4607-9a6d-37006e64548f',
+        "Access-Control-Allow-Origin": "*"
+      }})
       .then(response => {
         this.setState({all: response.data}, function(){
           console.log(this.state.all);
